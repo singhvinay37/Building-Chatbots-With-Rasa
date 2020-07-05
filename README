@@ -1,0 +1,81 @@
+Problem Statement:
+------------------
+
+An Indian startup named 'Foodie' wants to build a conversational bot (chatbot) which can help users discover restaurants across several Indian cities. 
+The main purpose of the bot is to help users discover restaurants quickly and efficiently and to provide a good restaurant discovery experience.
+
+Important Notes: 
+----------------
+
+Assume that Foodie works only in Tier-1 and Tier-2 cities. You can use the current HRA classification of the cities from here. 
+Under the section 'current classification' on this page, the table categorizes cities as X, Y and Z. Consider 'X ' cities as tier-1 and 'Y' as tier-2. 
+The bot should be able to identify common synonyms of city names, such as Bangalore/Bengaluru, Mumbai/Bombay etc. 
+
+
+Foodie Chatbot built using RASA. Data is fetched using zomato api functions & link is provided below-
+
+base_url = "https://developers.zomato.com/api/v2.1/"
+
+Installation Guide: 
+-------------------
+
+Install Anaconda
+Requirements:
+1. Python (requires Python 3.6.0 or higher)
+
+Create Environment and install requirements
+C:\> python -m venv --system-site-packages ./venv
+or
+$conda create --name <env-name> --file requirements.txt
+
+activate the environment
+C:\> .\venv\Scripts\activate
+
+Installing Rasa and Rasa X:
+---------------------------
+
+You can install both Rasa and Rasa X using the following code:
+$ pip install rasa-x --extra-index-url https://pypi.rasa.com/simple
+
+Install Rasa NLU and Spacy in the same command prompt:
+------------------------------------------------------
+
+$ pip install rasa[spacy]
+$ python -m spacy download en_core_web_md
+$ python -m spacy link en_core_web_md en
+
+The foodie chatbot features brief is as follows:
+------------------------------------------------
+
+There are 6 functions which have been created in actions.py file for validation, restaurant search and sending an email using SMTP feature.
+1. Validate Location
+2. Validate Cuisine
+3. Categorize Budget into 3 slots
+4. Validate Email using REGEX 
+5. Search Retaurants
+6. Send email function with restaurant details.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------|
+This working is just an example for one situation that it is trained for. There are other ways User can provide input while conversating with Bot.|
+--------------------------------------------------------------------------------------------------------------------------------------------------|
+
+1. Greetings from User & Greet back by Bot
+2. Input location from the customer
+3. Validate the location. Only tier-1, tier-2 cities are served by us.
+4. Cuisine preference
+5. validate cuisine. Six varieties of cuisine information we provide.     
+    Chinese
+    Mexican
+    Italian
+    American
+    South Indian
+    North Indian
+6. Check customer's budget constraint for two people by providing below options-
+    Lesser than Rs. 300
+    Rs. 300 to 700
+    More than 700
+7. List top 5 restaurants based on above choices in sorted order of zomato rating. (if 5 options are avaiable in budget)
+8. check if User want TOP rated restaurant details on email.
+9. If yes, send an email. If not, say good bye!
+
+
